@@ -1,15 +1,14 @@
-name: Docker Image CI
-
+name: Run Tests
 on:
   push:
-    branches: [ "main" ]
+    branches: ['main']
   pull_request:
-    branches: [ "main" ]
+    branches: ['main']
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - run: docker build -t erkizie/react-test -f Dockerfile.dev .
-    - run: docker run -e CI=true erkizie/react-test npm test
+      - uses: actions/checkout@v3
+      - run: docker build -t erkizie/react-test -f Dockerfile.dev .
+      - run: docker run -e CI=true erkizie/react-test npm test
